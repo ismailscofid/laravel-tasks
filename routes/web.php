@@ -52,8 +52,8 @@ Route::post('/task', function (Request $request) {
     $task = new Task;
     $task->name = $request->name;
     $task->save();
-    // Clear the cache
-    Cache::flush();
+    // Clear the cached task list
+    Cache::forget('tasks');
 
     return redirect('/');
 });
@@ -64,8 +64,8 @@ Route::post('/task', function (Request $request) {
 Route::delete('/task/{id}', function ($id) {
     Log::info('Delete /task/'.$id);
     Task::findOrFail($id)->delete();
-    // Clear the cache
-    Cache::flush();
+    // Clear the cached task list
+    Cache::forget('tasks');
 
     return redirect('/');
 });
