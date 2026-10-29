@@ -1,25 +1,32 @@
----
-languages:
-- php
-page_type: sample
-description: "This is a sample application that you can use to follow along with the Build a PHP and MySQL web app in Azure tutorial."
-products:
-- azure
-- azure-app-service
----
+# Laravel Tasks
 
-# Laravel sample for Azure App Service
+A small task list built with Laravel. You can add tasks, view them, and delete them. This repository is a fork of [Azure-Samples/laravel-tasks](https://github.com/Azure-Samples/laravel-tasks), which accompanies the [Azure App Service PHP and MySQL tutorial](https://learn.microsoft.com/azure/app-service/tutorial-php-mysql-app).
 
-This is a sample application that you can use to follow along with the tutorial at 
-[Build a PHP and MySQL web app in Azure](https://docs.microsoft.com/azure/app-service/tutorial-php-mysql-app?pivots=platform-linux).
+## Run locally
 
-This sample application is taken from the official [Laravel sample task list application](https://github.com/laravel/quickstart-basic) and modified minimally to make it work with Azure App Service. For instructions on how to use Laravel, see the official repository.
+You need PHP 8.1 or later with the extensions required by Laravel, Composer, and a MySQL database.
 
-## License
+1. Clone this repository and enter its directory.
+2. Install PHP dependencies: `composer install`.
+3. Copy `.env.example` to `.env` and set the `DB_*` values for your local MySQL database.
+4. Generate an application key: `php artisan key:generate`.
+5. Create the database, then run `php artisan migrate`.
+6. Start the app with `php artisan serve` and open the address it prints.
 
-See [LICENSE](LICENSE).
+Never commit your `.env` file or real credentials.
+
+## Tests
+
+The tests use an in-memory SQLite database, so PHP's SQLite extensions are required. Run:
+
+```sh
+php artisan test
+```
+
+## License and attribution
+
+This project is licensed under the [MIT License](LICENSE). The original sample is based on Laravel's task list application and was adapted for Azure App Service by Microsoft.
 
 ## Contributing
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-  
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). See the [FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with questions.
